@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">androidMyProject</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_new">New</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 </resources>

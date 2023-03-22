@@ -2,34 +2,47 @@ package com.tazmans_android.androidmyproject.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.tazmans_android.androidmyproject.adapters.ToDoListAdapter
+import com.tazmans_android.androidmyproject.R
 import com.tazmans_android.androidmyproject.databinding.ActivityMainBinding
+import com.tazmans_android.androidmyproject.fragments.FragmentManager
+import com.tazmans_android.androidmyproject.fragments.add.NewItemFragment
+import com.tazmans_android.androidmyproject.fragments.list.ListFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var adapter: ToDoListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        adapter = ToDoListAdapter()
         setContentView(binding.root)
 
-        initAdapter()
-        setAddButtonListeners()
+        setBottomNavigationListener()
+        initDefaultFragment()
     }
 
-    private fun initAdapter() = with(binding) {
-        rvToDoList.layoutManager = LinearLayoutManager(this@MainActivity)
-        rvToDoList.adapter = adapter
+    private fun initDefaultFragment() {
+        FragmentManager.setFragment(ListFragment(), this)
     }
 
-    private fun setAddButtonListeners() = with(binding) {
-        bAdd.setOnClickListener {
-            val text = etInput.text.toString()
-            adapter.addData(text)
-            etInput.text.clear()
+    private fun setBottomNavigationListener() {
+        binding.bNavigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                    FragmentManager.setFragment(ListFragment(), this)
+                }
+                R.id.nav_new -> {
+                    FragmentManager.setFragment(NewItemFragment(), this)
+                }
+            }
+            true
         }
     }
 }
+
+// TODO
+// Добавить меню +
+// Перевести все на фрагменты +
+// Несколько экранов для добавление и редактирования заметки
+// Удаление заметки
+// Перевод на room библиотеку
+// Добавление личного кабинета

@@ -1,4 +1,4 @@
-package com.tazmans_android.androidmyproject.adapters
+package com.tazmans_android.androidmyproject.fragments.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tazmans_android.androidmyproject.R
 
-class ToDoListAdapter :
-    RecyclerView.Adapter<ToDoListAdapter.ListViewHolder>() {
+class ListAdapter :
+    RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     val data = mutableListOf("test", "test 111", "test 2222")
 
     class ListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
