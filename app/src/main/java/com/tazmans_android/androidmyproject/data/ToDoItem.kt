@@ -1,5 +1,7 @@
 package com.tazmans_android.androidmyproject.data
 
 data class ToDoItem(
-    val title: String
+    var id: Int,
+    var title: String,
+    var description: String
 )

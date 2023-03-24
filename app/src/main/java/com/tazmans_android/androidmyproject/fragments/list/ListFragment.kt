@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tazmans_android.androidmyproject.databinding.ActivityTodoListBinding
+import com.tazmans_android.androidmyproject.databinding.FragmentTodoListBinding
 import com.tazmans_android.androidmyproject.fragments.BaseFragment
 
-class ListFragment : BaseFragment() {
-    private lateinit var binding: ActivityTodoListBinding
+class ListFragment : BaseFragment(), ListAdapter.Listener {
+    private lateinit var binding: FragmentTodoListBinding
     private lateinit var adapter: ListAdapter
 
     override fun onCreateView(
@@ -17,15 +17,19 @@ class ListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = ActivityTodoListBinding.inflate(inflater, container, false)
-
+        binding = FragmentTodoListBinding.inflate(inflater, container, false)
+        adapter = ListAdapter(this)
         initRecycleView()
+
         return binding.root
     }
 
     private fun initRecycleView() = with(binding) {
-        adapter = ListAdapter()
         rvToDoList.adapter = adapter
         rvToDoList.layoutManager = LinearLayoutManager(activity)
     }
+//
+//    fun addItemToList(newItem: ToDoItem) {
+//        adapter.addData(newItem)
+//    }
 }

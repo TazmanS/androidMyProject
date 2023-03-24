@@ -3,39 +3,50 @@ package com.tazmans_android.androidmyproject.fragments.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tazmans_android.androidmyproject.R
+import com.tazmans_android.androidmyproject.data.Store
+import com.tazmans_android.androidmyproject.data.ToDoItem
+import com.tazmans_android.androidmyproject.databinding.TodoItemRowBinding
 
-class ListAdapter :
+class ListAdapter(private val listener: Listener) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
-    val data = mutableListOf("test", "test 111", "test 2222")
 
     class ListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+        private val binding = TodoItemRowBinding.bind(view)
 
-        init {
-            textView = view.findViewById(R.id.tTitle)
+        fun setDataItem(item: ToDoItem, listener: Listener) = with(binding) {
+            tTitle.text = item.title
+
+            itemView.setOnClickListener {
+//                listener.onClickItem(item)
+            }
         }
     }
 
-    override fun onCreateViewHolder(view: ViewGroup, viewType: Int): ListViewHolder {
-        val view = LayoutInflater.from(view.context).inflate(R.layout.todo_item_row, view, false)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
+        val view =
+            LayoutInflater.from(viewGroup.context).inflate(R.layout.todo_item_row, viewGroup, false)
 
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.textView.text = data[position]
+        holder.setDataItem(Store.data[position], listener)
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return Store.data.size
     }
 
-    fun addData(newItem: String) {
-        data.add(newItem)
+
+    fun addItem(newItem: ToDoItem) {
+        Store.addItem(newItem)
         notifyDataSetChanged()
+    }
+
+    interface Listener {
+//        fun onClickItem(item: ToDoItem)
     }
 
 }

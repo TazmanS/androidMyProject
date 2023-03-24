@@ -17,11 +17,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setBottomNavigationListener()
-        initDefaultFragment()
+        initHomeFragment()
     }
 
-    private fun initDefaultFragment() {
-        FragmentManager.setFragment(ListFragment(), this)
+    fun initHomeFragment() {
+        FragmentManager.setFragment(ListFragment(), this@MainActivity)
     }
 
     private fun setBottomNavigationListener() {
