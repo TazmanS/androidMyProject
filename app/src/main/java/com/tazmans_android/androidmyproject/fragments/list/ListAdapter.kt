@@ -19,7 +19,7 @@ class ListAdapter(private val listener: Listener) :
             tTitle.text = item.title
 
             itemView.setOnClickListener {
-//                listener.onClickItem(item)
+                listener.onClickItem(item)
             }
         }
     }
@@ -40,13 +40,13 @@ class ListAdapter(private val listener: Listener) :
     }
 
 
-    fun addItem(newItem: ToDoItem) {
+    public fun addItem(newItem: ToDoItem) {
         Store.addItem(newItem)
         notifyDataSetChanged()
     }
 
     interface Listener {
-//        fun onClickItem(item: ToDoItem)
+        fun onClickItem(item: ToDoItem)
     }
 
 }

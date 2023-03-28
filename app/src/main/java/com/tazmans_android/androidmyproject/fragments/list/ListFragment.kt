@@ -4,9 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tazmans_android.androidmyproject.R
+import com.tazmans_android.androidmyproject.data.ToDoItem
 import com.tazmans_android.androidmyproject.databinding.FragmentTodoListBinding
 import com.tazmans_android.androidmyproject.fragments.BaseFragment
+import com.tazmans_android.androidmyproject.fragments.add.NewItemFragment
 
 class ListFragment : BaseFragment(), ListAdapter.Listener {
     private lateinit var binding: FragmentTodoListBinding
@@ -28,8 +33,12 @@ class ListFragment : BaseFragment(), ListAdapter.Listener {
         rvToDoList.adapter = adapter
         rvToDoList.layoutManager = LinearLayoutManager(activity)
     }
-//
-//    fun addItemToList(newItem: ToDoItem) {
-//        adapter.addData(newItem)
-//    }
+
+    override fun onClickItem(item: ToDoItem) {
+        setFragmentResult("item", bundleOf("id" to item.id))
+
+        val transition = activity?.supportFragmentManager?.beginTransaction()
+        transition?.replace(R.id.placeholder, NewItemFragment())
+        transition?.commit()
+    }
 }
