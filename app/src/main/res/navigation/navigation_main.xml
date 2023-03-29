@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
     app:startDestination="@id/preLoaderFragment2">
     <fragment
         android:id="@+id/preLoaderFragment2"
         android:name="com.tazmans_android.androidmyproject.ui.PreLoaderFragment"
-        android:label="PreLoaderFragment" />
+        android:label="PreLoaderFragment">
+        <action
+            android:id="@+id/action_preLoaderFragment2_to_onBoardingOneFragment"
+            app:destination="@id/onBoardingOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingOneFragment"
+        android:name="com.tazmans_android.androidmyproject.ui.onBoarding.OnBoardingOneFragment"
+        android:label="fragment_on_boarding_one"
+        tools:layout="@layout/fragment_on_boarding_one">
+        <action
+            android:id="@+id/action_onBoardingOneFragment_to_onBoardingTwoFragment"
+            app:destination="@id/onBoardingTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingTwoFragment"
+        android:name="com.tazmans_android.androidmyproject.ui.onBoarding.OnBoardingTwoFragment"
+        android:label="fragment_on_boarding_two"
+        tools:layout="@layout/fragment_on_boarding_two" />
 </navigation>

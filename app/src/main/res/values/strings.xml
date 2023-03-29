@@ -9,4 +9,7 @@
     <string name="save">Save</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="find_your_comfort_food_here">Find your Comfort Food here</string>
+    <string name="here_you_can_find_a_chef_or_dish_for_every_taste_and_color_enjoy">Here You Can find a chef or dish for every taste and color. Enjoy!</string>
+    <string name="next">Next</string>
 </resources>
