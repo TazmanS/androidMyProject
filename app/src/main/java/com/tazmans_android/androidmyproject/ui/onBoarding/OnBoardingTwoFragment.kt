@@ -20,7 +20,14 @@ class OnBoardingTwoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnBoardingTwoBinding.inflate(inflater, container, false)
+        initButtonListener()
         return binding.root
+    }
+
+    private fun initButtonListener() {
+//        binding.bNext.setOnClickListener {
+//            NavHostFragment.findNavController(this).navigate(R.id.)
+//        }
     }
 
     companion object {
