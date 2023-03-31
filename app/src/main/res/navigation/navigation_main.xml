@@ -25,5 +25,14 @@
         android:id="@+id/onBoardingTwoFragment"
         android:name="com.tazmans_android.androidmyproject.ui.onBoarding.OnBoardingTwoFragment"
         android:label="fragment_on_boarding_two"
-        tools:layout="@layout/fragment_on_boarding_two" />
+        tools:layout="@layout/fragment_on_boarding_two">
+        <action
+            android:id="@+id/action_onBoardingTwoFragment_to_authSignInFragment"
+            app:destination="@id/authSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authSignUpFragment"
+        android:name="com.tazmans_android.androidmyproject.ui.auth.AuthSignUpFragment"
+        android:label="fragment_auth_sign_up"
+        tools:layout="@layout/fragment_auth_sign_up" />
 </navigation>

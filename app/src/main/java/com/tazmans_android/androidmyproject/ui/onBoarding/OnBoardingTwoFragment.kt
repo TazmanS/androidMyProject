@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import com.tazmans_android.androidmyproject.R
 import com.tazmans_android.androidmyproject.databinding.FragmentOnBoardingTwoBinding
 
 class OnBoardingTwoFragment : Fragment() {
@@ -25,9 +27,10 @@ class OnBoardingTwoFragment : Fragment() {
     }
 
     private fun initButtonListener() {
-//        binding.bNext.setOnClickListener {
-//            NavHostFragment.findNavController(this).navigate(R.id.)
-//        }
+        binding.bNext.setOnClickListener {
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_onBoardingTwoFragment_to_authSignInFragment)
+        }
     }
 
     companion object {

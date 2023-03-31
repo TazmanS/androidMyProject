@@ -14,4 +14,7 @@
     <string name="next">Next</string>
     <string name="food_ninja_is_where_your_comfort_food_lives">Food Ninja is Where Your Comfort Food Lives</string>
     <string name="enjoy_a_fast_and_smooth_food_delivery_at_your_doorstep">Enjoy a fast and smooth food delivery at your doorstep</string>
+    <string name="sign_up_for_free">Sign Up For Free</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">already have an account?</string>
 </resources>
