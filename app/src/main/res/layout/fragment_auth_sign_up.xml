@@ -41,9 +41,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="CheckBox"
+                    android:text="@string/keep_me_signed_in"
+                    android:button="@drawable/checkbox_bg"
+                    android:paddingStart="8dp"
+                    app:buttonTint="#15BE77"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+
+                <!--                <com.google.android.material.textfield.TextInputLayout-->
+                <!--                    android:id="@+id/editTextTextPersonName4"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="46dp"-->
+                <!--                    android:elevation="1dp"-->
+                <!--                    -->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/textView4"-->
+                <!--                    app:boxStrokeWidth="0dp"-->
+                <!--                    app:boxStrokeWidthFocused="0dp"-->
+                <!--                    app:hintEnabled="false">-->
+
+                <!--                    <com.google.android.material.textfield.TextInputEditText-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:drawableStart="@drawable/ic_form_user"-->
+                <!--                        android:drawablePadding="10dp"-->
+                <!--                        android:elevation="1dp"-->
+                <!--                        android:ems="10"-->
+                <!--                        android:background="@drawable/input_bg"-->
+                <!--                        android:hint="@string/name"-->
+                <!--                        android:inputType="textPersonName"-->
+                <!--                        android:minHeight="57dp"-->
+                <!--                        android:paddingStart="24dp"-->
+                <!--                        android:paddingEnd="24dp"-->
+                <!--                        android:paddingTop="10dp" />-->
+                <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <EditText
                     android:id="@+id/editTextTextPersonName4"
@@ -55,6 +89,11 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:minHeight="57dp"
+                    android:drawableStart="@drawable/ic_form_user"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:hint="@string/login"
+                    android:drawablePadding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -63,7 +102,11 @@
                     android:id="@+id/checkBox2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CheckBox"
+                    android:text="@string/email_me_about_special_pricing"
+                    android:button="@drawable/checkbox_bg"
+                    android:paddingStart="8dp"
+                    app:buttonTint="#15BE77"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
@@ -100,8 +143,14 @@
                     android:background="@drawable/input_bg"
                     android:elevation="1dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textPassword"
                     android:minHeight="57dp"
+                    android:drawableStart="@drawable/ic_form_lock"
+                    android:drawableEnd="@drawable/ic_show_password"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:hint="@string/password"
+                    android:drawablePadding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
@@ -114,8 +163,13 @@
                     android:background="@drawable/input_bg"
                     android:elevation="1dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:minHeight="57dp"
+                    android:drawableStart="@drawable/ic_form_email"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:hint="@string/email"
+                    android:drawablePadding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
