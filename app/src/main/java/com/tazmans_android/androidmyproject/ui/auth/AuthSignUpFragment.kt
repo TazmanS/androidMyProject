@@ -1,13 +1,16 @@
 package com.tazmans_android.androidmyproject.ui.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.tazmans_android.androidmyproject.MainRepository
+import com.tazmans_android.androidmyproject.api.request.SignUpRequest
 import com.tazmans_android.androidmyproject.databinding.FragmentAuthSignUpBinding
+import kotlinx.coroutines.launch
 
 class AuthSignUpFragment : Fragment() {
     private var _binding: FragmentAuthSignUpBinding? = null
@@ -27,14 +30,14 @@ class AuthSignUpFragment : Fragment() {
     }
 
     private fun signUp() = with(binding) {
-        var isValid = validateFields()
+//        val isValid = validateFields()
 
-        if (isValid) {
-            Log.v("MyTag", isValid.toString())
-        } else {
-            Log.v("MyTag", isValid.toString())
+        if (true) {
+            lifecycleScope.launch {
+                val token = MainRepository().signUp(createUser())
+//                Log.v("MyTag", token.message.toString())
+            }
         }
-
     }
 
     private fun validateFields(): Boolean {
@@ -55,6 +58,16 @@ class AuthSignUpFragment : Fragment() {
         }
 
         return isValid
+    }
+
+    private fun createUser(): SignUpRequest {
+        return SignUpRequest(
+            login = binding.etLogin.text.toString(),
+            email = binding.etEmail.text.toString(),
+            password = binding.etPassword.text.toString(),
+            keep_me = binding.cbKeepMe.isActivated,
+            email_me = binding.cbEmailMe.isActivated
+        )
     }
 
     override fun onDestroy() {
