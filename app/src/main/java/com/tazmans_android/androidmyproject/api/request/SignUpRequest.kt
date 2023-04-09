@@ -1,6 +1,6 @@
-package com.tazmans_android.androidmyproject.entity
+package com.tazmans_android.androidmyproject.api.request
 
-data class SignUpData(
+data class SignUpRequest(
     var login: String,
     var password: String,
     var email: String,
