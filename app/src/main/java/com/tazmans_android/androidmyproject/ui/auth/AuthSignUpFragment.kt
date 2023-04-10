@@ -5,6 +5,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.tazmans_android.androidmyproject.MainRepository
@@ -30,12 +31,21 @@ class AuthSignUpFragment : Fragment() {
     }
 
     private fun signUp() = with(binding) {
-//        val isValid = validateFields()
+        val isValid = validateFields()
 
-        if (true) {
+        if (isValid) {
             lifecycleScope.launch {
-                val token = MainRepository().signUp(createUser())
-//                Log.v("MyTag", token.message.toString())
+                val response = MainRepository().signUp(createUser())
+
+                if (response.data == null) {
+                    Toast.makeText(
+                        requireActivity(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    val token = response.data?.access_token.toString()
+                }
             }
         }
     }
@@ -43,9 +53,9 @@ class AuthSignUpFragment : Fragment() {
     private fun validateFields(): Boolean {
         var isValid = true
         with(binding) {
-            if (etLogin.text.toString().length < 5) {
+            if (etLogin.text.toString().length < 3) {
                 isValid = false
-                etLogin.error = "Login should be at least 5 letters"
+                etLogin.error = "Login should be at least 3 letters"
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches()) {
                 isValid = false
