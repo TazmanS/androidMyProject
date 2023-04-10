@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.tazmans_android.androidmyproject.MainRepository
+import com.tazmans_android.androidmyproject.MainViewModel
 import com.tazmans_android.androidmyproject.api.request.SignUpRequest
 import com.tazmans_android.androidmyproject.databinding.FragmentAuthSignUpBinding
 import kotlinx.coroutines.launch
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 class AuthSignUpFragment : Fragment() {
     private var _binding: FragmentAuthSignUpBinding? = null
     private val binding get() = _binding!!
+    private val mMainViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +37,7 @@ class AuthSignUpFragment : Fragment() {
 
         if (isValid) {
             lifecycleScope.launch {
-                val response = MainRepository().signUp(createUser())
+                val response = mMainViewModel.signUp(createUser())
 
                 if (response.data == null) {
                     Toast.makeText(
@@ -45,6 +47,7 @@ class AuthSignUpFragment : Fragment() {
                     ).show()
                 } else {
                     val token = response.data?.access_token.toString()
+                    mMainViewModel.setToken(token)
                 }
             }
         }
