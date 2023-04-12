@@ -17,10 +17,6 @@ class PreLoaderFragment : Fragment() {
     private var _binding: FragmentPreLoaderBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,13 +32,7 @@ class PreLoaderFragment : Fragment() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(1000)
             NavHostFragment.findNavController(this@PreLoaderFragment)
-                .navigate(R.id.action_preLoaderFragment2_to_onBoardingOneFragment)
-        }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() {
+                .navigate(R.id.action_preLoaderFragment_to_onBoardingOneFragment)
         }
     }
 

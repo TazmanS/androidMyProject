@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/preLoaderFragment2">
+    app:startDestination="@id/preLoaderFragment">
     <fragment
-        android:id="@+id/preLoaderFragment2"
+        android:id="@+id/preLoaderFragment"
         android:name="com.tazmans_android.androidmyproject.ui.PreLoaderFragment"
-        android:label="PreLoaderFragment">
+        android:label="PreLoaderFragment"
+        tools:layout="@layout/fragment_pre_loader">
         <action
-            android:id="@+id/action_preLoaderFragment2_to_onBoardingOneFragment"
+            android:id="@+id/action_preLoaderFragment_to_onBoardingOneFragment"
             app:destination="@id/onBoardingOneFragment" />
     </fragment>
     <fragment
@@ -35,4 +36,9 @@
         android:name="com.tazmans_android.androidmyproject.ui.auth.AuthSignUpFragment"
         android:label="fragment_auth_sign_up"
         tools:layout="@layout/fragment_auth_sign_up" />
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.tazmans_android.androidmyproject.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" />
 </navigation>

@@ -11,14 +11,14 @@ import com.tazmans_android.androidmyproject.store.TokenEntity
 
 class MainRepository(private val tokenDao: TokenDao) : BaseRepo() {
     private var authService = APIServices.authService
-    val token: LiveData<List<String>> = tokenDao.getToken()
+    val token: LiveData<List<TokenEntity>> = tokenDao.getToken()
 
     suspend fun signUp(signUpRequest: SignUpRequest): Resource<SignUpResponse> {
         return safeApiCall { authService.signUp(signUpRequest) }
     }
 
     suspend fun setToken(token: String) {
-        tokenDao.setToken(TokenEntity(accessToken = token))
+        tokenDao.setToken(TokenEntity(id = 0, accessToken = token))
     }
 
 }

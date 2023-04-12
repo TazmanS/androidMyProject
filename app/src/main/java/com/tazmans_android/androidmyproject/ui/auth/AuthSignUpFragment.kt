@@ -5,14 +5,11 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.tazmans_android.androidmyproject.MainViewModel
 import com.tazmans_android.androidmyproject.api.request.SignUpRequest
 import com.tazmans_android.androidmyproject.databinding.FragmentAuthSignUpBinding
-import kotlinx.coroutines.launch
 
 class AuthSignUpFragment : Fragment() {
     private var _binding: FragmentAuthSignUpBinding? = null
@@ -33,24 +30,27 @@ class AuthSignUpFragment : Fragment() {
     }
 
     private fun signUp() = with(binding) {
-        val isValid = validateFields()
 
-        if (isValid) {
-            lifecycleScope.launch {
-                val response = mMainViewModel.signUp(createUser())
+        mMainViewModel.setToken("2423234")
 
-                if (response.data == null) {
-                    Toast.makeText(
-                        requireActivity(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    val token = response.data?.access_token.toString()
-                    mMainViewModel.setToken(token)
-                }
-            }
-        }
+//        val isValid = validateFields()
+//
+//        if (isValid) {
+//            lifecycleScope.launch {
+//                val response = mMainViewModel.signUp(createUser())
+//
+//                if (response.data == null) {
+//                    Toast.makeText(
+//                        requireActivity(),
+//                        response.message.toString(),
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                } else {
+//                    val token = response.data?.access_token.toString()
+//                    mMainViewModel.setToken(token)
+//                }
+//            }
+//        }
     }
 
     private fun validateFields(): Boolean {
