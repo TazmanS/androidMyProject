@@ -8,10 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.tazmans_android.androidmyproject.R
 import com.tazmans_android.androidmyproject.databinding.FragmentPreLoaderBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class PreLoaderFragment : Fragment() {
     private var _binding: FragmentPreLoaderBinding? = null
@@ -29,11 +25,13 @@ class PreLoaderFragment : Fragment() {
     }
 
     private fun init() {
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(1000)
-            NavHostFragment.findNavController(this@PreLoaderFragment)
-                .navigate(R.id.action_preLoaderFragment_to_onBoardingOneFragment)
-        }
+        NavHostFragment.findNavController(this@PreLoaderFragment)
+            .navigate(R.id.action_preLoaderFragment_to_onBoardingOneFragment)
+//        CoroutineScope(Dispatchers.Main).launch {
+//            delay(1000)
+//            NavHostFragment.findNavController(this@PreLoaderFragment)
+//                .navigate(R.id.action_preLoaderFragment_to_onBoardingOneFragment)
+//        }
     }
 
     override fun onDestroyView() {

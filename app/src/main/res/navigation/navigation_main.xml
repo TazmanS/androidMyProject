@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_preLoaderFragment_to_onBoardingOneFragment"
             app:destination="@id/onBoardingOneFragment" />
+        <action
+            android:id="@+id/action_preLoaderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingOneFragment"
@@ -41,4 +44,9 @@
         android:name="com.tazmans_android.androidmyproject.TestFragment"
         android:label="fragment_test"
         tools:layout="@layout/fragment_test" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.tazmans_android.androidmyproject.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

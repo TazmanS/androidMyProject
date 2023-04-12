@@ -6,11 +6,10 @@ import androidx.room.*
 
 @Dao
 interface TokenDao {
-    @Query("SELECT * FROM token_table")
-    fun getToken(): LiveData<List<TokenEntity>>
+    @Query("SELECT access_token FROM token_table LIMIT 1")
+    fun getToken(): LiveData<String>
 
-    //    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun setToken(tokenEntity: TokenEntity)
 
     @Delete

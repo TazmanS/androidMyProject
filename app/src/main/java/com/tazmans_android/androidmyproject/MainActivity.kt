@@ -1,9 +1,9 @@
 package com.tazmans_android.androidmyproject
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,14 +13,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val token = MainViewModel(this@MainActivity.application).token
-
-        mMainViewModel.token.observeForever {
-            Log.v("MyTag", it.size.toString())
-//            if (it.isNotEmpty()) {
-//                val token = it[0]
-//                Log.v("MyTag", token.toString())
-//            }
+        mMainViewModel.token.observe({ lifecycle }) {
+            if (!it.isNullOrEmpty()) {
+                goToHome()
+            } else {
+                goToLogin()
+            }
         }
+    }
+
+    private fun goToLogin() {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.preLoaderFragment)
+    }
+
+    private fun goToHome() {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.homeFragment)
     }
 }
