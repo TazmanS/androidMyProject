@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.tazmans_android.androidmyproject.api.Resource
 import com.tazmans_android.androidmyproject.api.request.SignInRequest
 import com.tazmans_android.androidmyproject.api.request.SignUpRequest
+import com.tazmans_android.androidmyproject.api.response.ProfileResponse
 import com.tazmans_android.androidmyproject.api.response.SignInResponse
 import com.tazmans_android.androidmyproject.api.response.SignUpResponse
 import com.tazmans_android.androidmyproject.store.MainDataBase
@@ -37,6 +38,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteToken()
         }
+    }
+
+    suspend fun getProfile(): Resource<ProfileResponse> {
+        return repository.getProfile()
     }
 
 }

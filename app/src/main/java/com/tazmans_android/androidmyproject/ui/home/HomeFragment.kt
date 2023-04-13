@@ -25,6 +25,11 @@ class HomeFragment : Fragment() {
             deleteToken()
         }
 
+//        lifecycleScope.launch {
+//            val res = mMainViewModel.getProfile()
+//            Log.v("MyTag", res.data.toString())
+//        }
+
         return binding.root
     }
 

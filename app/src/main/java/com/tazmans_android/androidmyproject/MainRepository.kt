@@ -6,6 +6,7 @@ import com.tazmans_android.androidmyproject.api.BaseRepo
 import com.tazmans_android.androidmyproject.api.Resource
 import com.tazmans_android.androidmyproject.api.request.SignInRequest
 import com.tazmans_android.androidmyproject.api.request.SignUpRequest
+import com.tazmans_android.androidmyproject.api.response.ProfileResponse
 import com.tazmans_android.androidmyproject.api.response.SignInResponse
 import com.tazmans_android.androidmyproject.api.response.SignUpResponse
 import com.tazmans_android.androidmyproject.store.TokenDao
@@ -29,6 +30,10 @@ class MainRepository(private val tokenDao: TokenDao) : BaseRepo() {
 
     suspend fun deleteToken() {
         tokenDao.deleteToken()
+    }
+
+    suspend fun getProfile(): Resource<ProfileResponse> {
+        return safeApiCall { authService.getProfile() }
     }
 
 }
