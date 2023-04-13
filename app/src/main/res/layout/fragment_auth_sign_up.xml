@@ -49,36 +49,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    android:id="@+id/editTextTextPersonName4"-->
-                <!--                    android:layout_width="0dp"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="46dp"-->
-                <!--                    android:elevation="1dp"-->
-                <!--                    -->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/textView4"-->
-                <!--                    app:boxStrokeWidth="0dp"-->
-                <!--                    app:boxStrokeWidthFocused="0dp"-->
-                <!--                    app:hintEnabled="false">-->
-
-                <!--                    <com.google.android.material.textfield.TextInputEditText-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:drawableStart="@drawable/ic_form_user"-->
-                <!--                        android:drawablePadding="10dp"-->
-                <!--                        android:elevation="1dp"-->
-                <!--                        android:ems="10"-->
-                <!--                        android:background="@drawable/input_bg"-->
-                <!--                        android:hint="@string/name"-->
-                <!--                        android:inputType="textPersonName"-->
-                <!--                        android:minHeight="57dp"-->
-                <!--                        android:paddingStart="24dp"-->
-                <!--                        android:paddingEnd="24dp"-->
-                <!--                        android:paddingTop="10dp" />-->
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
                 <EditText
                     android:id="@+id/etLogin"
                     android:layout_width="0dp"
@@ -110,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cbKeepMe" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/goToSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

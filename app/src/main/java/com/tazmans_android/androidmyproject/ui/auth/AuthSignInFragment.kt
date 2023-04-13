@@ -9,43 +9,36 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
 import com.tazmans_android.androidmyproject.Constants
 import com.tazmans_android.androidmyproject.MainViewModel
-import com.tazmans_android.androidmyproject.R
-import com.tazmans_android.androidmyproject.api.request.SignUpRequest
-import com.tazmans_android.androidmyproject.databinding.FragmentAuthSignUpBinding
+import com.tazmans_android.androidmyproject.api.request.SignInRequest
+import com.tazmans_android.androidmyproject.databinding.FragmentAuthSignInBinding
 import kotlinx.coroutines.launch
 
-class AuthSignUpFragment : Fragment() {
-    private var _binding: FragmentAuthSignUpBinding? = null
+class AuthSignInFragment : Fragment() {
+    private var _binding: FragmentAuthSignInBinding? = null
     private val binding get() = _binding!!
+
     private val mMainViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAuthSignUpBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthSignInBinding.inflate(inflater, container, false)
 
-        binding.bSignUp.setOnClickListener {
-            signUp()
-        }
-
-        binding.goToSignIn.setOnClickListener {
-            goToSignIn()
+        binding.bSignIn.setOnClickListener {
+            signIn()
         }
 
         return binding.root
     }
 
-    private fun signUp() = with(binding) {
+    private fun signIn() {
         val isValid = validateFields()
-
         if (isValid) {
             lifecycleScope.launch {
-                val response = mMainViewModel.signUp(createUser())
-
+                val response = mMainViewModel.signIn(createRequest())
                 if (response.data == null) {
                     Toast.makeText(
                         requireActivity(),
@@ -63,10 +56,6 @@ class AuthSignUpFragment : Fragment() {
     private fun validateFields(): Boolean {
         var isValid = true
         with(binding) {
-            if (etLogin.text.toString().length < 3) {
-                isValid = false
-                etLogin.error = Constants.loginError
-            }
             if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text.toString()).matches()) {
                 isValid = false
                 etEmail.error = Constants.emailError
@@ -80,19 +69,11 @@ class AuthSignUpFragment : Fragment() {
         return isValid
     }
 
-    private fun createUser(): SignUpRequest {
-        return SignUpRequest(
-            login = binding.etLogin.text.toString(),
+    private fun createRequest(): SignInRequest {
+        return SignInRequest(
             email = binding.etEmail.text.toString(),
-            password = binding.etPassword.text.toString(),
-            keep_me = binding.cbKeepMe.isActivated,
-            email_me = binding.cbEmailMe.isActivated
+            password = binding.etPassword.text.toString()
         )
-    }
-
-    private fun goToSignIn() {
-        NavHostFragment.findNavController(this)
-            .navigate(R.id.action_authSignUpFragment_to_authSignInFragment)
     }
 
     override fun onDestroy() {

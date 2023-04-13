@@ -1,5 +1,5 @@
 package com.tazmans_android.androidmyproject.api.response
 
-class ErrorException : Throwable() {
-
-}
+data class SignInResponse(
+    var access_token: String
+)
