@@ -1,20 +1,18 @@
 package com.tazmans_android.androidmyproject.api
 
-import android.app.Application
-import com.tazmans_android.androidmyproject.MainViewModel
+import com.tazmans_android.androidmyproject.store.TokenDao
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class NetworkBase : Application() {
+class NetworkBase(tokenDao: TokenDao) {
 
-    private val mMainViewModel: MainViewModel = MainViewModel(this)
     private var token: String? = null
 
     init {
-        mMainViewModel.token.observeForever {
+        tokenDao.getToken().observeForever {
             token = it
         }
     }
